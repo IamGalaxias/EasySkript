@@ -23,10 +23,14 @@ public class EasySkript extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
-        if(getServer().getPluginManager().getPlugin("Skript") == null) {
-            Bukkit.getLogger().info("Skript is not installed! Installing it now...");
+        if (getServer().getPluginManager().getPlugin("Skript") == null) {
+            getLogger().info("Skript is not installed! Installing it now...");
+            getLogger().info("Note: reload/restart your server!");
 
             installSkript();
+        }
+        else {
+            getLogger().info("Skript is installed! You can use EasySkript.");
         }
 
         getCommand("skinstall").setExecutor(new SkinstallCommand());
@@ -42,6 +46,7 @@ public class EasySkript extends JavaPlugin {
 
     private void installSkript() {
         BufferedInputStream bufferedinputstream = null;
+
         try {
             final URL bukGetURL = new URL("http://api.bukget.org/3/plugins/bukkit/" + "skript" + "/" + "latest" + "/download");
             final URLConnection conn = bukGetURL.openConnection();
@@ -53,7 +58,7 @@ public class EasySkript extends JavaPlugin {
             Path p = Paths.get(destinationFile + file);
 
             Files.copy(bufferedinputstream, p);
-            Bukkit.getLogger().info(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasyInstall" + ChatColor.GRAY + "]" + ChatColor.GREEN + " the plugin was successfully download/installed!");
+            Bukkit.getLogger().info(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.GREEN + " Skript was successfully download/installed!");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
