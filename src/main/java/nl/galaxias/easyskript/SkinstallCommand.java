@@ -35,6 +35,8 @@ public class SkinstallCommand implements CommandExecutor {
                         try {
                             EasySkript.saveSkript(skriptUrl, destinationFile);
 
+                            Bukkit.dispatchCommand(player, "skript reload all");
+
                             sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.GREEN + " the Skript was successfully download/installed!");
                         } catch (IOException e) {
                             e.printStackTrace();
