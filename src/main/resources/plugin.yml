@@ -1,0 +1,7 @@
+name: EasySkript
+version: 1.0
+main: nl.galaxias.easyskript.EasySkript
+
+commands:
+  skinstall:
+    description: Allows you to install a Skript
