@@ -28,14 +28,14 @@ public class SkinstallCommand implements CommandExecutor {
                     String extension = saveToFile.substring(saveToFile.lastIndexOf(".") + 1, saveToFile.length());
 
                     if (!(extension.contains("sk"))) {
-                        Bukkit.getLogger().info("The file that was going to be downloaded is not a .sk file!");
+                        Bukkit.getLogger().info("The file that was going to be downloaded is not an .sk file!");
                         sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.DARK_RED + " this is not a Skript (.sk) file! Please note a Skript file " + ChatColor.BOLD + "always" + ChatColor.RESET + ChatColor.DARK_RED + " ends with .sk!");
                     }
                     else {
                         try {
                             EasySkript.saveSkript(skriptUrl, destinationFile);
 
-                            Bukkit.dispatchCommand(player, "skript reload all");
+                            Bukkit.dispatchCommand(player, "skript reload " + destinationFile);
 
                             sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.GREEN + " the Skript was successfully download/installed!");
                         } catch (IOException e) {
