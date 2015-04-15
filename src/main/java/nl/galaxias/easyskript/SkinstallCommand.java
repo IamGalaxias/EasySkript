@@ -35,13 +35,18 @@ public class SkinstallCommand implements CommandExecutor {
                         try {
                             EasySkript.saveSkript(skriptUrl, destinationFile);
 
-                            Bukkit.dispatchCommand(player, "skript reload " + destinationFile);
+                            Bukkit.dispatchCommand(player, "skript reload " + saveToFile);
 
                             sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.GREEN + " the Skript was successfully download/installed!");
                         } catch (IOException e) {
                             e.printStackTrace();
+
+                            sender.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "EasySkript" + ChatColor.GRAY + "]" + ChatColor.DARK_RED + " an unexpected error occured!");
                         }
                     }
+                }
+                else if (args.length != 1) {
+                    sender.sendMessage(ChatColor.RED + "/skinstall <Skript URL>");
                 }
             }
             else if (!(player.isOp())) {
